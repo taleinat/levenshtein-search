@@ -1,0 +1,31 @@
+{
+  "author": "Tal Einat <taleinat@gmail.com>",
+  "name": "levenshtein-search",
+  "description": "A Javascript library for fuzzy substring searches.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "lodash": "^4.17.11",
+    "semantic-release": "^15.9.15",
+    "standard": "^12.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taleinat/levenshtein-search.git"
+  },
+  "bugs": {
+    "url": "https://github.com/taleinat/levenshtein-search/issues"
+  },
+  "homepage": "https://github.com/taleinat/levenshtein-search",
+  "license": "MIT",
+  "scripts": {
+    "check-only": "! grep 'test.only' tests/test.js -n",
+    "lint": "standard",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "test": "npm run lint && npm run check-only && jest"
+  },
+  "release": {
+    "getLastRelease": "last-release-git"
+  }
+}
