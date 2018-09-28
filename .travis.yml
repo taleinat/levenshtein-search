@@ -1,0 +1,19 @@
+sudo: false
+dist: trusty
+language: node_js
+cache:
+  directories:
+    - node_modules
+node_js:
+  - '8'
+  - '10'
+before_script:
+  - npm prune
+script:
+  - npm test
+after_success:
+  - git fetch --tags # needed to select new version off of latest git tag
+  - npm run semantic-release
+branches:
+  only:
+   - master
