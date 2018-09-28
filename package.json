@@ -7,7 +7,6 @@
   "devDependencies": {
     "jest": "^23.6.0",
     "lodash": "^4.17.11",
-    "semantic-release": "^15.9.15",
     "standard": "^12.0.1"
   },
   "repository": {
@@ -22,10 +21,7 @@
   "scripts": {
     "check-only": "! grep 'test.only' tests/test.js -n",
     "lint": "standard",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "test": "npm run lint && npm run check-only && jest"
   },
-  "release": {
-    "getLastRelease": "last-release-git"
-  }
+  "version": "0.0.1"
 }
