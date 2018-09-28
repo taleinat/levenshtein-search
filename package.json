@@ -2,6 +2,9 @@
   "author": "Tal Einat <taleinat@gmail.com>",
   "name": "levenshtein-search",
   "description": "A Javascript library for fuzzy substring searches.",
+  "keywords": [
+    "Levenshtein Distance", "edit distance", "Levenshtein", "fuzzy", "search"
+  ],
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
@@ -23,5 +26,5 @@
     "lint": "standard",
     "test": "npm run lint && npm run check-only && jest"
   },
-  "version": "0.0.1"
+  "version": "0.0.2"
 }
