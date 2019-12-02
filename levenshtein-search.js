@@ -29,58 +29,8 @@ function isEditDistanceNoGreaterThan (a, b, maxDist) {
   a = a.slice(firstDiffIdx, lastDiffIdx + 1)
   b = b.slice(firstDiffIdx, lastDiffIdx + 1 + lenDelta)
 
-  if (maxDist * 5 >= a.length) {
-    return editDistance(a, b) <= maxDist
-  }
-
-  // use n-gram search
-  const ngramLen = Math.floor(a.length / (maxDist + 1))
-  for (let ngramStartIdx = 0; ngramStartIdx <= a.length - ngramLen; ngramStartIdx += ngramLen) {
-    const ngram = a.slice(ngramStartIdx, ngramStartIdx + ngramLen)
-
-    for (const bMatchIdx of searchExact(ngram, b)) {
-      let back
-      const maxBack = Math.min(ngramStartIdx, bMatchIdx)
-      for (back = 0; back < maxBack; back++) {
-        if (a[ngramStartIdx - (back + 1)] !== b[bMatchIdx - (back + 1)]) {
-          break
-        }
-      }
-
-      let forward
-      const maxForward = Math.min(
-        a.length - (ngramStartIdx + ngramLen),
-        b.length - (bMatchIdx + ngramLen)
-      )
-      for (forward = 0; forward < maxForward; forward++) {
-        if (
-          a[ngramStartIdx + ngramLen + (forward + 1)] !==
-          b[bMatchIdx + ngramLen + (forward + 1)]
-        ) {
-          break
-        }
-      }
-
-      const aBefore = a.slice(0, ngramStartIdx - back)
-      const aAfter = a.slice(ngramStartIdx + ngramLen + forward)
-      const bBefore = b.slice(0, bMatchIdx - back)
-      const bAfter = b.slice(bMatchIdx + ngramLen + forward)
-
-      if (Math.min(aBefore.length, bBefore.length) < Math.min(aAfter.length, bAfter.length)) {
-        const dist = editDistance(aBefore, bBefore)
-        if (dist <= maxDist && isEditDistanceNoGreaterThan(aAfter, bAfter, maxDist - dist)) {
-          return true
-        }
-      } else {
-        const dist = editDistance(aAfter, bAfter)
-        if (dist <= maxDist && isEditDistanceNoGreaterThan(aBefore, bBefore, maxDist - dist)) {
-          return true
-        }
-      }
-    }
-  }
-
-  return false
+  const [ dist, length ] = _expand(a, b, maxDist)
+  return dist + (b.length - length) <= maxDist
 }
 
 function editDistance (a, b) {
