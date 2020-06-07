@@ -220,7 +220,7 @@ function * fuzzySearchNgrams (needle, haystack, maxDist) {
           Math.max(0, haystackMatchIdx - ngramStartIdx - (maxDist - distRight)),
           haystackMatchIdx
         )),
-        maxDist
+        maxDist - distRight
       )
       if (distLeft === null) continue
 
