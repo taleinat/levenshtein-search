@@ -29,7 +29,7 @@ function isEditDistanceNoGreaterThan (a, b, maxDist) {
   a = a.slice(firstDiffIdx, lastDiffIdx + 1)
   b = b.slice(firstDiffIdx, lastDiffIdx + 1 + lenDelta)
 
-  const [ dist, length ] = _expand(a, b, maxDist)
+  const [dist, length] = _expand(a, b, maxDist)
   return dist + (b.length - length) <= maxDist
 }
 

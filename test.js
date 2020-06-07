@@ -22,13 +22,13 @@ describe('searchExact', () => {
 
   const testCases = {
     // name: (needle, haystack, [index, ...]),
-    'identical': ['abc', 'abc', [0]],
-    'substring': ['abc', '-ab-abc-ab-', [4]],
+    identical: ['abc', 'abc', [0]],
+    substring: ['abc', '-ab-abc-ab-', [4]],
     'double first item': ['def', 'abcddefg', [4]],
     'missing second item': ['bde', 'abcdefg', []],
     'completely different': ['abc', 'def', []],
-    'startswith': ['abc', 'abcd', [0]],
-    'endswith': ['bcd', 'abcd', [1]],
+    startswith: ['abc', 'abcd', [0]],
+    endswith: ['bcd', 'abcd', [1]],
     'multiple matches': ['abc', '-abc-abc-abc-', [1, 5, 9]]
   }
 
@@ -114,7 +114,7 @@ describe('fuzzySearch string', () => {
     'identical sequence': ['PATTERN', 'PATTERN', [
       [0, [[0, 7, 0]]]
     ]],
-    'substring': ['PATTERN', '----------PATTERN---------', [
+    substring: ['PATTERN', '----------PATTERN---------', [
       [0, [[10, 17, 0]]],
       [1, [[10, 17, 0]]],
       [2, [[10, 17, 0]]]
