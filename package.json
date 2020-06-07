@@ -26,7 +26,7 @@
   "homepage": "https://github.com/taleinat/levenshtein-search",
   "license": "MIT",
   "scripts": {
-    "check-only": "! grep 'test.only' tests/test.js -n",
+    "check-only": "! grep 'test.only' test.js -n",
     "lint": "standard",
     "test": "npm run lint && npm run check-only && jest"
   },
