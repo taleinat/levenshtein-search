@@ -30,5 +30,5 @@
     "lint": "standard",
     "test": "npm run lint && npm run check-only && jest"
   },
-  "version": "0.1.0"
+  "version": "0.1.1"
 }
